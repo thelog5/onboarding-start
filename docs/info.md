@@ -9,7 +9,7 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-This Tiny Tapeout design implements a write-only SPI peripheral that configures a 16-bit output block with optional PWM generation. The design runs on a 10 MHz system clock. Configuration is performed over SPI (~100 kHz) using fixed-length 16-bit write transactions.
+This Tiny Tapeout design implements a write-only SPI peripheral that configures a 16-bit output block with optional PWM generation. The design runs on a 10 MHz system clock. Configuration is performed over SPI (~100 kHz) using fixed-length 16-bit write transactions
 
 ## How to test
 
