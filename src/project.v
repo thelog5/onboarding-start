@@ -24,6 +24,13 @@ module tt_um_uwasic_onboarding_Logan_Li (
   wire [7:0] en_reg_pwm_15_8;
   wire [7:0] pwm_duty_cycle;
 
+  //surely to satisfy verilator
+  assign en_reg_out_7_0   = 8'b0;
+  assign en_reg_out_15_8  = 8'b0;
+  assign en_reg_pwm_7_0   = 8'b0;
+  assign en_reg_pwm_15_8  = 8'b0;
+  assign pwm_duty_cycle   = 8'b0;
+
   pwm_peripheral pwm_peripheral_inst (
     .clk(clk),
     .rst_n(rst_n),
@@ -36,6 +43,7 @@ module tt_um_uwasic_onboarding_Logan_Li (
   ); 
 
 
-  wire _unused = &{ena, clk, rst_n, 1'b0};
+  wire _unused_inputs;
+  assign _unused_inputs = &{ui_in, uio_in, ena, 1'b0};
 
 endmodule
