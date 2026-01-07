@@ -80,27 +80,26 @@ always @(posedge clk or negedge rst_n) begin
     end
 
     //ADDRESS VALIDATION + TRANSCTION FINALIZATION
-    if (ncs_rise) begin
+    else if (ncs_rise) begin
         if (bit_count == 5'd16) begin
 
             // if write mode and valid address
             if (shift_reg[15] == 1'b1 && shift_reg[14:8] <= max_address) begin
-            case (shift_reg[14:8])
-                7'h00: en_reg_out_7_0    <= shift_reg[7:0];
-                7'h01: en_reg_out_15_8   <= shift_reg[7:0];
-                7'h02: en_reg_pwm_7_0    <= shift_reg[7:0];
-                7'h03: en_reg_pwm_15_8   <= shift_reg[7:0];
-                7'h04: pwm_duty_cycle    <= shift_reg[7:0];
-                default: ; 
-            endcase
+                case (shift_reg[14:8])
+                    7'h00: en_reg_out_7_0    <= shift_reg[7:0];
+                    7'h01: en_reg_out_15_8   <= shift_reg[7:0];
+                    7'h02: en_reg_pwm_7_0    <= shift_reg[7:0];
+                    7'h03: en_reg_pwm_15_8   <= shift_reg[7:0];
+                    7'h04: pwm_duty_cycle    <= shift_reg[7:0];
+                    default: ; 
+                endcase
+            end
         end
-    end
 
-    // reset capture for next transaction
-    bit_count <= 0;
-    shift_reg <= 0;
+        // reset capture for next transaction
+        bit_count <= 0;
+        shift_reg <= 0;
     end
-
-end
+end    
 endmodule
 
